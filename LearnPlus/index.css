@@ -1,0 +1,116 @@
+* {
+  overflow-x: hidden;
+}
+
+/* .background{
+    position: absolute;
+    
+}  */
+
+h1 {
+  text-align: center;
+  margin-top: 200px;
+  font-size: 80px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-weight: 700;
+  color: antiquewhite;
+}
+
+.hero p {
+  text-align: center;
+  /* margin-top:50px; */
+  font-size: 45px;
+  color: antiquewhite;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  /* margin-top: 60px; */
+}
+#btn {
+  /* display:flex; */
+  border-radius: 5px;
+  background-color: rgb(137, 72, 94);
+  padding: 15px;
+  color: antiquewhite;
+  position: relative;
+  left: 45%;
+  margin-bottom: 55px;
+}
+
+.box {
+  background-color: rgb(229, 214, 214);
+  border-radius: 10px;
+  width: 200px;
+  /* height: 300px; */
+  float: left;
+  margin-left: 20px;
+  margin-top: 100px;
+  padding: 20px;
+  text-align: center;
+}
+
+.box img {
+  width: 70%;
+  border-radius: 10px;
+  border: 1px solid black;
+  transition: 0.7s ease-in-out;
+}
+.box img:hover {
+  transform: scale(1.1);
+}
+
+.container-item {
+  display: flex;
+  /* flex-direction: row; */
+}
+
+.hero {
+  background-image: url("images/children.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  width: 100%;
+}
+
+.container-item p {
+  color: rgb(137, 72, 94);
+  font-size: medium;
+  margin: 2px;
+  font-family: Arial, sans-serif;
+}
+.container-item button {
+  background-color: white;
+  border-radius: 8px;
+  margin-top: 10%;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid black;
+  color: rgb(119, 74, 74);
+}
+
+header {
+  background-color: rgb(229, 214, 214);
+}
+
+header li {
+  float: left;
+  margin: 20px;
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+#icon li {
+  float: right;
+}
+
+ul li :hover {
+  color: rgb(137, 72, 94);
+}
+h2 {
+  text-align: center;
+  margin-top: 5%;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+}
+.nav-items li a{
+  color: white;
+}
+.nav-items li a:hover{
+  color: rgb(137, 72, 94);
+}
