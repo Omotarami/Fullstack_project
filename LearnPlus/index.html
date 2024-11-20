@@ -15,7 +15,7 @@
                 <li><a href="#home">{{home}}</a></li>
                 <li><a href="#home">{{courses}}</a></li>
                 <li></li>
-                <div id="icon">
+                <div class="icon">
                     <li><i class="fa-solid fa-cart-shopping"></i></li>
                     <li><i class="fa-solid fa-magnifying-glass"></i></li>
                 </div>
@@ -29,7 +29,7 @@
             <h1>{{message}}</h1>
             <p>{{message1}}</p>
             <div class="button">
-                <button id="btn">Learn Now</button>
+                <button id="btn">{{button}}</button>
             </div>
         </div>
     </div>
@@ -38,65 +38,32 @@
             <div id="container">
                 <h1>{{heading}}</h1>
             </div>
-            <div class="box">
-                    <img src="images/maths.jpg">
-                    <p>Subject: Maths</p>
-                    <p>Location: London</p>
-                    <p>Price: &#xa3;300</p>
-                    <p>space: 5</p>
-                    <button>Add to cart</button>
+            <div id="box">
+                <div v-for="item in items" :key="item.itemId">
+                    <img v-bind:src="item.image" alt="images"/>
+                    <p>Subject:{{item.subject}}</p>
+                    <p>Location:{{item.location}}</p>
+                    <p>Price:&#xa3;{{item.price}}</p>
+                    <p>space:{{item.space}}</p>
+                    <button v-on:click="addToCart">Add to cart</button>
                 </div>
-                <div class="box">
-                    <img src="images/science.jpg">
-                    <p>Subject: Basic science</p>
-                    <p>Location: Chester</p>
-                    <p>Price: &#xa3;550</p>
-                    <p>space: 5</p>
-                    <button>Add to cart</button>
-                </div>    
-                <div class="box">
-                    <img src="images/art.jpg">
-                    <p>Subject: Arts</p>
-                    <p>Location: Hendon</p>
-                    <p>Price: &#xa3;350</p>
-                    <p>space: 5</p>
-                    <button>Add to cart</button>
-                </div>
-                <div class="box">
-                    <img src="images/music_class.png">
-                    <p>Subject: Music</p>
-                    <p>Location: Bristol</p>
-                    <p>Price: &#xa3;220 </p>
-                    <p>space: 5</p>
-                    <button>Add to cart</button>
-                </div>   
-            </div>
+            </div>    
         </section>
     </main>
-        
-           
-            <!-- <div id="card">
-                <img src="images/maths.jpg"><br>
-                <p1>Subject: Maths<br></p1>
-                <p2>Location: London<br></p2>
-                <p3>Price: &#xa3;300 <br></p3>
-                <p4>space: 5</p4>
-            </div> -->
-
-<script>
+    <script>
     let learn = new Vue({
         el:'#learn',
         data:{
             message:'LEARN PLUS',
             message1: 'Be your best self with extra learning',
-
+            button: 'Learn Now'
         }
     })
     let nav_items = new Vue({
         el:'.nav_items',
         data:{
             home:'HOME',
-            courses:'COURSES'
+            courses:'COURSES',
         }
     })
 
@@ -106,6 +73,44 @@
             heading:'COURSES',
         }
     })
+    let box = new Vue({
+        el:'#box',
+        data(){
+            return{
+            items:[
+            {
+            itemId:101,  
+            image:'images/maths.jpg',
+            subject:'Maths',
+            location:'London',
+            price:'300',
+            space:'5'
+            },
+            {
+            image:'images/science.jpg',
+            subject:'Basic Science',
+            location:'Chester',
+            price:'500',
+            space:'7'
+            },
+            {
+            image:'images/music_class.png',
+            subject:'Music',
+            location:'Hendon',
+            price:'350',
+            space:'4'
+            },
+            {
+            image:'images/art.jpg',
+            subject:'Art',
+            location:'Manchester',
+            price:'840',
+            space:'12'
+            }
+        ]
+        }
+    }
+        })
     
     
     </script>
