@@ -11,9 +11,9 @@
 <body>
     <header>
         <nav>
-            <ul class="nav-items">
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#home">COURSES</a></li>
+            <ul class="nav_items">
+                <li><a href="#home">{{home}}</a></li>
+                <li><a href="#home">{{courses}}</a></li>
                 <li></li>
                 <div id="icon">
                     <li><i class="fa-solid fa-cart-shopping"></i></li>
@@ -34,41 +34,43 @@
         </div>
     </div>
         </section>
-        <h2>COURSES</h2>
         <section class="container-item">
-            <div class="box">
-                <img src="images/maths.jpg">
-                <p>Subject: Maths</p>
-                <p>Location: London</p>
-                <p>Price: &#xa3;300</p>
-                <p>space: 5</p>
-                <button>Add to cart</button>
+            <div id="container">
+                <h1>{{heading}}</h1>
             </div>
             <div class="box">
-                <img src="images/science.jpg">
-                <p>Subject: Basic science</p>
-                <p>Location: Chester</p>
-                <p>Price: &#xa3;550</p>
-                <p>space: 5</p>
-                <button>Add to cart</button>
-            </div>    
-            <div class="box">
-                <img src="images/art.jpg">
-                <p>Subject: Arts</p>
-                <p>Location: Hendon</p>
-                <p>Price: &#xa3;350</p>
-                <p>space: 5</p>
-                <button>Add to cart</button>
+                    <img src="images/maths.jpg">
+                    <p>Subject: Maths</p>
+                    <p>Location: London</p>
+                    <p>Price: &#xa3;300</p>
+                    <p>space: 5</p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="box">
+                    <img src="images/science.jpg">
+                    <p>Subject: Basic science</p>
+                    <p>Location: Chester</p>
+                    <p>Price: &#xa3;550</p>
+                    <p>space: 5</p>
+                    <button>Add to cart</button>
+                </div>    
+                <div class="box">
+                    <img src="images/art.jpg">
+                    <p>Subject: Arts</p>
+                    <p>Location: Hendon</p>
+                    <p>Price: &#xa3;350</p>
+                    <p>space: 5</p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="box">
+                    <img src="images/music_class.png">
+                    <p>Subject: Music</p>
+                    <p>Location: Bristol</p>
+                    <p>Price: &#xa3;220 </p>
+                    <p>space: 5</p>
+                    <button>Add to cart</button>
+                </div>   
             </div>
-            <div class="box">
-                <img src="images/music_class.png">
-                <p>Subject: Music</p>
-                <p>Location: Bristol</p>
-                <p>Price: &#xa3;220 </p>
-                <p>space: 5</p>
-                <button>Add to cart</button>
-            </div>   
-        </div>
         </section>
     </main>
         
@@ -81,15 +83,31 @@
                 <p4>space: 5</p4>
             </div> -->
 
-    <script>
+<script>
     let learn = new Vue({
         el:'#learn',
         data:{
             message:'LEARN PLUS',
             message1: 'Be your best self with extra learning',
-        
+
         }
     })
+    let nav_items = new Vue({
+        el:'.nav_items',
+        data:{
+            home:'HOME',
+            courses:'COURSES'
+        }
+    })
+
+    let container = new Vue({
+        el:'#container',
+        data:{
+            heading:'COURSES',
+        }
+    })
+    
+    
     </script>
 </body>
 </html>
