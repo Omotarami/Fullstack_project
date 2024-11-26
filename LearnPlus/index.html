@@ -9,18 +9,20 @@
     <title>LearnPlus</title>
 </head>
 <body>
+    <div id="LearnPlus">
     <header>
+        <div class="header_container">
         <nav>
             <ul class="nav_items">
                 <li><a href="#home">{{home}}</a></li>
                 <li><a href="#home">{{courses}}</a></li>
-                <li></li>
-                <div class="icon">
-                    <li><i class="fa-solid fa-cart-shopping"></i></li>
+                <div id="icon" @addcart="updateCheckOut">
+                    <li><i class="fa-solid fa-cart-shopping"></i> Cart({{addcart}})</li>    
                     <li><i class="fa-solid fa-magnifying-glass"></i></li>
                 </div>
             </ul>
         </nav>
+        </div>
             
     </header>
     <main>
@@ -34,10 +36,17 @@
         </div>
     </div>
         </section>
-        <section class="container-item">
-            <div id="container">
-                <h1>{{heading}}</h1>
-            </div>
+        <div id="container">
+            <h1>{{heading}}</h1>
+        </div>
+        <center>
+        <div id="sorting">
+            <button @click="sortbysubject">{{subject}}</button>
+            <button @click="sortbylocation">{{location}}</button>
+            <button @click="sortbyprice">{{price}}</button>
+            <button @click="sortbyspace">{{space}}</button>
+        </div>
+        </center>
             <div id="box">
                 <div v-for="item in items" :key="item.itemId">
                     <img v-bind:src="item.image" alt="images"/>
@@ -45,74 +54,13 @@
                     <p>Location:{{item.location}}</p>
                     <p>Price:&#xa3;{{item.price}}</p>
                     <p>space:{{item.space}}</p>
-                    <button v-on:click="addToCart">Add to cart</button>
+                    <p>
+                        <button if v-on:click='addtoCart'>Add to cart</button>
+                    </p>
                 </div>
             </div>    
-        </section>
     </main>
-    <script>
-    let learn = new Vue({
-        el:'#learn',
-        data:{
-            message:'LEARN PLUS',
-            message1: 'Be your best self with extra learning',
-            button: 'Learn Now'
-        }
-    })
-    let nav_items = new Vue({
-        el:'.nav_items',
-        data:{
-            home:'HOME',
-            courses:'COURSES',
-        }
-    })
-
-    let container = new Vue({
-        el:'#container',
-        data:{
-            heading:'COURSES',
-        }
-    })
-    let box = new Vue({
-        el:'#box',
-        data(){
-            return{
-            items:[
-            {
-            itemId:101,  
-            image:'images/maths.jpg',
-            subject:'Maths',
-            location:'London',
-            price:'300',
-            space:'5'
-            },
-            {
-            image:'images/science.jpg',
-            subject:'Basic Science',
-            location:'Chester',
-            price:'500',
-            space:'7'
-            },
-            {
-            image:'images/music_class.png',
-            subject:'Music',
-            location:'Hendon',
-            price:'350',
-            space:'4'
-            },
-            {
-            image:'images/art.jpg',
-            subject:'Art',
-            location:'Manchester',
-            price:'840',
-            space:'12'
-            }
-        ]
-        }
-    }
-        })
-    
-    
-    </script>
+    <script src="index.js">  </script>
+</div>
 </body>
 </html>

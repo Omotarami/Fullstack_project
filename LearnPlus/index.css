@@ -2,11 +2,6 @@
   overflow-x: hidden;
 }
 
-/* .background{
-    position: absolute;
-    
-}  */
-
 .hero h1 {
   text-align: center;
   margin-top: 200px;
@@ -24,8 +19,8 @@
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   /* margin-top: 60px; */
 }
+
 #btn {
-  /* display:flex; */
   border-radius: 5px;
   background-color: rgb(137, 72, 94);
   padding: 15px;
@@ -35,17 +30,19 @@
   margin-bottom: 55px;
 }
 
-#box {
-  background-color: rgb(229, 214, 214);
-  width: 200px;
-  padding: 20px;
+/* #box { */
+/*  */
+/* width: 200px;
+  padding: 30px;
   border-radius: 10px;
   text-align: center;
-  float:left;
-  overflow: hidden;
-}
-#box div{
-  margin: 20px;
+  margin-right: 45%; */
+
+/* } */
+#box {
+  display: flex;
+  gap: 5px;
+  text-align: center;
 }
 
 #box img {
@@ -58,10 +55,6 @@
   transform: scale(1.1);
 }
 
-/* #container {
-  display: flex;
-} */
-
 .hero {
   background-image: url("images/children.jpg");
   background-size: cover;
@@ -70,14 +63,13 @@
   width: 100%;
 }
 
-.container-item p {
+#box p {
   color: rgb(137, 72, 94);
   font-size: medium;
   margin: 2px;
   font-family: Arial, sans-serif;
 }
-.container-item button {
-  background-color: white;
+#box button {
   border-radius: 8px;
   margin-top: 10%;
   padding: 10px;
@@ -88,30 +80,45 @@
 
 header {
   background-color: rgb(229, 214, 214);
+  width: 100%;
 }
 
 header li {
   float: left;
-  margin: 20px;
+  margin: 10px;
   color: white;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-.icon li {
+#icon li {
   float: right;
+  margin-right: 30px;
 }
 
 ul li :hover {
   color: rgb(137, 72, 94);
 }
-.container-item h1 {
+#container h1 {
   font-family: Impact, "Arial Narrow Bold", sans-serif;
   font-size: 25px;
   text-align: center;
   margin-top: 5%;
 }
+
 .nav_items li a {
   color: white;
 }
 .nav_items li a:hover {
   color: rgb(137, 72, 94);
+}
+
+#sorting button{ 
+  margin-bottom: 30px;
+  border-radius:20px;
+  padding: 3px;
+  width:70px;
+  border: 2px solid black;
+  background: none;
+
+
+
 }
