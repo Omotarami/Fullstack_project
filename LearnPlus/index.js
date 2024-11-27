@@ -1,15 +1,10 @@
-let LearnPlus = new Vue({
-  el: "#LearnPlus",
-  data: {
-    addcart: 0,
-  },
-});
 let icon = new Vue({
-  methods: {
-    updateCheckOut() {
-      this.$emit("addToCart");
+  el: "#icon",
+  data() {
+    return {
+      addcart: 0,
+    }
     },
-  },
 });
 
 let learn = new Vue({
@@ -46,7 +41,7 @@ let sorting = new Vue({
 let box = new Vue({
   el: "#box",
   data() {
-    return {
+    return{
       items: [
         {
           itemId: 101,
@@ -82,10 +77,11 @@ let box = new Vue({
         },
       ],
       methods: {
-        updateCheckOut() {
-          this.$emit('addcart');
+        addtoCart() {
+            this.$emit(space);
+          },
         },
-      },
-    };
-  },
+      }
+    }
+
 });
