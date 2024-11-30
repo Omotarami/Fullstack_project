@@ -1,17 +1,32 @@
-#container{
+/* #container{
     background-color: white;
     border: 1px solid black;
-    width:50%;
-    height: 500px;
-    position: relative;
-}
+    width:45%;
+    height: 60%; */
+    #container {
+        text-align: center;
+        max-width:60%;
+        margin: 70px auto;
+        padding: 40px;
+        background-color: #f0f0f0;
+        box-shadow: 0 2px 4px rgb(137, 72, 94);
+      }
 h1{
     text-align: center;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:sans-serif;
 }
 
 label{
     font-size: xx-large;
+}
+
+#checkoutbtn button{
+    background-color: white;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
     
 }
 

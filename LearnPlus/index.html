@@ -16,8 +16,10 @@
             <ul class="nav_items">
                 <li><a href="#home">{{home}}</a></li>
                 <li><a href="#home">{{courses}}</a></li>
-                <div id="icon" @addcart="updateCheckOut">
-                    <li><i class="fa-solid fa-cart-shopping"></i> Cart({{addcart}})</li>    
+                <div id="icon" name="addcart">
+                    <button>
+                        <li><i class="fa-solid fa-cart-shopping"></i> Cart({{addcart}})</li>
+                    </button>   
                     <li><i class="fa-solid fa-magnifying-glass"></i></li>
                 </div>
             </ul>
@@ -40,9 +42,10 @@
             <h1>{{heading}}</h1>
         </div>
         <center>
+
         <div id="sorting">
-            <button @click="sortbysubject">{{subject}}</button>
-            <button @click="sortbylocation">{{location}}</button>
+            <button @click="sort('subject')">{{subject}}</button>
+            <button @click="sort('location')">{{location}}</button>
             <button @click="sortbyprice">{{price}}</button>
             <button @click="sortbyspace">{{space}}</button>
         </div>
@@ -55,12 +58,12 @@
                     <p>Price:&#xa3;{{item.price}}</p>
                     <p>space:{{item.space}}</p>
                     <p>
-                        <button if v-on:click='addtoCart'>Add to cart</button>
+                        <button v-if="" v-on:click='addtoCart(item)'>Add to cart</button>
                     </p>
                 </div>
-            </div>    
+            </div>  
     </main>
-    <script src="index.js"></script>
 </div>
+<script src="index.js"></script>
 </body>
 </html>

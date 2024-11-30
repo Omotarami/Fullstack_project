@@ -3,8 +3,8 @@ let icon = new Vue({
   data() {
     return {
       addcart: 0,
-    }
-    },
+    };
+  },
 });
 
 let learn = new Vue({
@@ -41,7 +41,7 @@ let sorting = new Vue({
 let box = new Vue({
   el: "#box",
   data() {
-    return{
+    return {
       items: [
         {
           itemId: 101,
@@ -76,12 +76,11 @@ let box = new Vue({
           space: "5",
         },
       ],
-      methods: {
-        addtoCart() {
-            this.$emit(space);
-          },
-        },
+      methods:{
+        sort(){
+    
+        }
       }
-    }
-
+    };
+  },
 });

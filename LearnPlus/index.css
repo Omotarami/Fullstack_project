@@ -89,10 +89,21 @@ header li {
   color: white;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-#icon li {
+#icon{
+  float: right;
+  margin-right: 20px;
+
+}
+#icon button{
+  background-color:rosybrown;
+  border-radius: 5px;
+  border:none;
+
+}
+/* #icon li {
   float: right;
   margin-right: 30px;
-}
+} */
 
 ul li :hover {
   color: rgb(137, 72, 94);

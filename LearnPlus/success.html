@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Sucessful</title>
+    <link rel="stylesheet" href="successpage.css">
+</head>
+<body>
+    <div id="successpage">
+        <div id="success-icon">
+        <div id="success-title">Successful</div>
+        <div id="success-message">Thank you!.</div>
+        <button id="success-button" @click = "success">Go Back</button>
+      </div>
+      <script>
+        let sucesspage = new Vue({
+          el:'succes-button',
+          methods:{
+            success(){           
+               window.location.href("index.html");
+            }
+
+
+          }
+        }
+        )
+
+      </script>
+</body>
+</html>
