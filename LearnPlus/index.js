@@ -1,86 +1,101 @@
-let icon = new Vue({
-  el: "#icon",
-  data() {
-    return {
-      addcart: 0,
-    };
-  },
-});
-
-let learn = new Vue({
-  el: "#learn",
+new Vue({
+  el: '#app',
   data: {
-    message: "LEARN PLUS",
-    message1: "Be your best self with extra learning",
-    button: "Learn Now",
+    home: 'Home',
+    courses: 'Courses',
+    message: 'Welcome to LearnPlus',
+    message1: 'Explore the best courses available.',
+    subject: 'Sort by Subject',
+    location: 'Sort by Location',
+    price: 'Sort by Price',
+    space: 'Sort by Space',
+    cart: [],
+    items: [
+      {
+        itemId: 1001,
+        image: 'images/maths.jpg',
+        subject: 'Mathematics',
+        location: 'London',
+        price: 100,
+        space: 10
+      },
+      {
+        itemId: 1002,
+        image: 'images/science.jpg',
+        subject: 'Science',
+        location: 'Manchester',
+        price: 229,
+        space: 10
+      },
+      {
+        itemId: 1003,
+        image: 'images/art.jpg',
+        subject: 'Art',
+        location: 'leichester',
+        price: 486,
+        space: 10
+      },
+      {
+        itemId: 1004,
+        image: 'images/music_class.png',
+        subject: 'Social Studies',
+        location: 'Chester',
+        price: 60,
+        space: 10
+      },
+      {
+        itemId: 1005,
+        image: 'images/music_class.png',
+        subject: 'French',
+        location: 'New Castle',
+        price: 180,
+        space: 10
+      },
+      {
+        itemId: 1006,
+        image: 'images/music_class.png',
+        subject: 'Computerscience',
+        location: 'Bradford',
+        price: 160,
+        space: 10
+      },
+      {
+        itemId: 1007,
+        image: 'images/music_class.png',
+        subject: 'History',
+        location: 'Winchester',
+        price: 240,
+        space: 10
+      },
+      {
+        itemId: 1008,
+        image: 'images/music_class.png',
+        subject: 'English',
+        location: 'Sheffield',
+        price: 610,
+        space: 10
+      },
+      {
+        itemId: 1009,
+        image: 'images/music_class.png',
+        subject: 'Physical Education',
+        location: 'Yorkshire',
+        price: 170,
+        space: 10
+      },
+      {
+        itemId: 1010,
+        image: 'images/music_class.png',
+        subject: 'Music',
+        location: 'Chester',
+        price: 285,
+        space: 10
+      },
+    ],
   },
-});
-let nav_items = new Vue({
-  el: ".nav_items",
-  data: {
-    home: "HOME",
-    courses: "COURSES",
-  },
-});
-
-let container = new Vue({
-  el: "#container",
-  data: {
-    heading: "COURSES",
-  },
-});
-let sorting = new Vue({
-  el: "#sorting",
-  data: {
-    subject: "Subject",
-    price: "price",
-    location: "location",
-    space: "space",
-  },
-});
-let box = new Vue({
-  el: "#box",
-  data() {
-    return {
-      items: [
-        {
-          itemId: 101,
-          image: "images/maths.jpg",
-          subject: "Maths",
-          location: "London",
-          price: "300",
-          space: "5",
-        },
-        {
-          itemId: 102,
-          image: "images/science.jpg",
-          subject: "Basic Science",
-          location: "Chester",
-          price: "500",
-          space: "5",
-        },
-        {
-          itemId: 103,
-          image: "images/music_class.png",
-          subject: "Music",
-          location: "Hendon",
-          price: "350",
-          space: "5",
-        },
-        {
-          itemId: 104,
-          image: "images/art.jpg",
-          subject: "Art",
-          location: "Manchester",
-          price: "840",
-          space: "5",
-        },
-      ],
-      methods:{
-        sort(){
-    
-        }
-      }
-    };
+  methods: {
+    addToCart() {
+      this.$emit('add-to-cart');
+    },
   },
 });
