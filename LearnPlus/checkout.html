@@ -22,7 +22,7 @@
           <input type="text" id="phonenumber" name="phonenumber" />
         </div>
         <div id="checkoutbtn">
-          <button @click="checkout">Checkout</button>
+          <button @click="checkoutbtn">Checkout</button>
         </div>
       </form>
     </div>
@@ -35,8 +35,8 @@
         phoneNumber: "Phone Number ",
       },
       method: {
-        checkout() {
-          window.location.href = "success.html";
+        checkoutbtn: function() {
+          alert('Congratulations, checkout is complete');
         },
       },
     });

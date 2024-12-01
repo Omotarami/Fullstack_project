@@ -3,67 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src=" https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
     <link rel="stylesheet" type="text/css" href="index.css">
     <title>LearnPlus</title>
 </head>
 <body>
-    <div id="LearnPlus">
-    <header>
-        <div class="header_container">
+    <div id="app">
+        <header id="header-section">
         <nav>
-            <ul class="nav_items">
+            <ul>
                 <li><a href="#home">{{home}}</a></li>
-                <li><a href="#home">{{courses}}</a></li>
-                <div id="icon" name="addcart">
-                    <button>
-                        <li><i class="fa-solid fa-cart-shopping"></i> Cart({{addcart}})</li>
-                    </button>   
-                    <li><i class="fa-solid fa-magnifying-glass"></i></li>
+                <li><a href="#courses">{{courses}}</a></li>
+                <div id="icon">
+                    <span class="fa-solid fa-magnifying-glass"></span>
+                    <button @add-to-cart="update">
+                        <span class="fa-solid fa-cart-shopping"></span> Cart ({{cart.length}})
+                    </button>
                 </div>
             </ul>
         </nav>
-        </div>
-            
-    </header>
-    <main>
-        <section class="hero">
-        <div id="learn">
+        </header>
+        <main id="main-section">
+          <section class="hero">
             <h1>{{message}}</h1>
             <p>{{message1}}</p>
-            <div class="button">
-                <button id="btn">{{button}}</button>
+          </section>
+          <center>
+            <button @click="sortbySubject">{{subject}}</button>
+            <button @click="sortbylocation">{{location}}</button>
+            <button @click="sortByPrice">{{price}}</button>
+            <button @click="sortBySpace">{{space}}</button>
+          </center>
+          <div id="box">
+            <div v-for="item in items" :key="item.itemId" class="item-card">
+                <img v-bind:src="item.image" alt="images" />
+              <p>Subject: {{item.subject}}</p>
+              <p>Location: {{item.location}}</p>
+              <p>Price: &#xa3;{{item.price}}</p>
+              <p>Space: {{item.space}}</p>
+              <button  v- if @click="addToCart(item)">Add to cart</button>
             </div>
-        </div>
+          </div>
+        </main>
     </div>
-        </section>
-        <div id="container">
-            <h1>{{heading}}</h1>
-        </div>
-        <center>
-
-        <div id="sorting">
-            <button @click="sort('subject')">{{subject}}</button>
-            <button @click="sort('location')">{{location}}</button>
-            <button @click="sortbyprice">{{price}}</button>
-            <button @click="sortbyspace">{{space}}</button>
-        </div>
-        </center>
-            <div id="box">
-                <div v-for="item in items" :key="item.itemId">
-                    <img v-bind:src="item.image" alt="images"/>
-                    <p>Subject:{{item.subject}}</p>
-                    <p>Location:{{item.location}}</p>
-                    <p>Price:&#xa3;{{item.price}}</p>
-                    <p>space:{{item.space}}</p>
-                    <p>
-                        <button v-if="" v-on:click='addtoCart(item)'>Add to cart</button>
-                    </p>
-                </div>
-            </div>  
-    </main>
-</div>
-<script src="index.js"></script>
+    <script src='index.js'></script>
 </body>
 </html>
+
+      
