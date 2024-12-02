@@ -1,56 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
-    <link rel="stylesheet" type="text/css" href="index.css">
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="index.css" />
     <title>LearnPlus</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="app">
-        <header id="header-section">
+      <header id="header-section">
         <nav>
-            <ul>
-                <li><a href="#home">{{home}}</a></li>
-                <li><a href="#courses">{{courses}}</a></li>
-                <div id="icon">
-                    <span class="fa-solid fa-magnifying-glass"></span>
-                    <button @add-to-cart="update">
-                        <span class="fa-solid fa-cart-shopping"></span> Cart ({{cart.length}})
-                    </button>
-                </div>
-            </ul>
+          <ul>
+            <li><a href="#home">{{home}}</a></li>
+            <li><a href="#courses">{{courses}}</a></li>
+            <div id="icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <button @click = "togglecart">
+                {{cartvisible ? 'View items' : 'cart'}}
+                <i class="fa-solid fa-cart-shopping"></i> 
+              </button>
+            </div>
+          </ul>
         </nav>
-        </header>
-        <main id="main-section">
-          <section class="hero">
-            <h1>{{message}}</h1>
-            <p>{{message1}}</p>
-          </section>
-          <center>
-            <button @click="sortbySubject">{{subject}}</button>
-            <button @click="sortbylocation">{{location}}</button>
-            <button @click="sortByPrice">{{price}}</button>
-            <button @click="sortBySpace">{{space}}</button>
-          </center>
-          <div id="box">
-            <div v-for="item in items" :key="item.itemId" class="item-card">
-                <img v-bind:src="item.image" alt="images" />
+      </header>
+      <main id="main-section">
+        <section class="hero">
+          <h1>{{message}}</h1>
+          <p>{{message1}}</p>
+        </section>
+        <center>
+          <div v-if="!cartvisible">
+            <div>
+              <label for="sort">SortBy:</label>
+              <select v-model="sortAttribute" @change="sortitems">
+                <option value="subject">Subject</option>
+                <option value="Location">Location</option>
+                <option value="price">Price</option>
+                <option value="space">Space</option>
+              </select>
+              <button @click="toggleOrder">
+                {{sortOrder ===1 ? 'Ascending' : 'Descending'}}
+              </button>
+            </div>
+          </div>
+        </center>
+        <div id="box">
+          <div v-for="item in items" :key="item.itemId" class="item-card">
+            <img v-bind:src="item.image" alt="images" />
+            <div class="item-info">
               <p>Subject: {{item.subject}}</p>
               <p>Location: {{item.location}}</p>
               <p>Price: &#xa3;{{item.price}}</p>
               <p>Space: {{item.space}}</p>
-              <button  v- if @click="addToCart(item)">Add to cart</button>
             </div>
+            <button :disabled="item.space ===0" @click="addToCart(item)">
+              Add to cart
+            </button>
           </div>
-        </main>
-    </div>
-    <script src='index.js'></script>
-</body>
-</html>
+        </div>
 
-      
+      </main>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
