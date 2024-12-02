@@ -28,7 +28,7 @@
           </ul>
         </nav>
       </header>
-      <main id="main-section">
+      <div id="main-section">
         <section class="hero">
           <h1>{{message}}</h1>
           <p>{{message1}}</p>
@@ -50,7 +50,7 @@
           </div>
         </center>
         <div id="box">
-          <div v-for="item in items" :key="item.itemId" class="item-card">
+          <div v-for="item in items" :key="item.itemId" class="item">
             <img v-bind:src="item.image" alt="images" />
             <div class="item-info">
               <p>Subject: {{item.subject}}</p>
@@ -58,9 +58,11 @@
               <p>Price: &#xa3;{{item.price}}</p>
               <p>Space: {{item.space}}</p>
             </div>
-            <button :disabled="item.space ===0" @click="addToCart(item)">
+            <button :disabled="item.space === 0" @click="addToCart(item)">
               Add to cart
             </button>
+
+            <div id="cartvisible" class="cart"
           </div>
         </div>
 

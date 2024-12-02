@@ -5,17 +5,6 @@ new Vue({
     courses: "Courses",
     message: "Welcome to LearnPlus",
     message1: "Explore the best courses available.",
-    subject: "Sort by Subject",
-    location: "Sort by Location",
-    price: "Sort by Price",
-    space: "Sort by Space",
-    cart: [],
-    cartVisible: false,
-    sortAttribute: "subject",
-    sortOrder: 1,
-    name: "",
-    phone: "",
-    checkoutmessage: "",
     items: [
       {
         itemId: 1001,
@@ -98,6 +87,13 @@ new Vue({
         space: 10,
       },
     ],
+    cart: [],
+    cartVisible: false,
+    sortAttribute: "subject",
+    sortOrder: 1,
+    name: "",
+    phone: "",
+    checkoutmessage: "",
   },
   methods: {
     togglecart() {
@@ -116,6 +112,16 @@ new Vue({
       this.sortOrder *=-1;
       this.sort.items();
 
+      },
+    addToCart(item){
+      const cartItem = this.cart.find((lesson) => lesson.id ===  item.id);
+      if (cartItem){
+        cartItem.quantity++;
+      }else {
+        this.cart.push({...items,quantity:1})
       }
+      item.space--;
+    },
+
   },
 });
