@@ -1,0 +1,119 @@
+<div id="app">
+    <header id="header-section">
+      <nav>
+        <ul>
+          <li><a href="#home">{{ home }}</a></li>
+          <li><a href="#courses">{{ courses }}</a></li>
+          <div id="icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <button @click="toggleCart">
+              {{ cartVisible ? 'View items' : 'Cart' }}
+              <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <div id="main-section">
+      <section class="hero">
+        <h1>{{ message }}</h1>
+        <p>{{ message1 }}</p>
+      </section>
+      <center>
+        <div v-if="!cartVisible">
+          <div>
+            <label for="sort">SortBy:</label>
+            <select v-model="sortAttribute" @change="sortLessons">
+              <option value="subject">Subject</option>
+              <option value="location">Location</option>
+              <option value="price">Price</option>
+              <option value="space">Space</option>
+            </select>
+            <button @click="toggleOrder">
+              {{ sortOrder === 1 ? 'Ascending' : 'Descending' }}
+            </button>
+          </div>
+        </div>
+      </center>
+      <div id="box">
+        <div v-for="item in items" :key="item.itemId" class="item">
+          <img :src="item.image" alt="images" />
+          <div class="item-info">
+            <p>Subject: {{ item.subject }}</p>
+            <p>Location: {{ item.location }}</p>
+            <p>Price: &#xa3;{{ item.price }}</p>
+            <p>Space: {{ item.space }}</p>
+          </div>
+          <button :disabled="item.space === 0" @click="addToCart(item)">
+            Add to cart
+          </button>
+        </div>
+      </div>
+      <div v-if="cartVisible" class="cart">
+        <h2>Your Cart</h2>
+        <div v-for="lesson in cart" :key="lesson.itemId" class="item">
+          <div class="item-info">
+            <h3>{{ lesson.subject }}</h3>
+            <p>Quantity: {{ lesson.quantity }}</p>
+          </div>
+          <button @click="removeFromCart(lesson)">
+            <i class="fas fa-trash"></i> Remove
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+  new Vue({
+    el: "#app",
+    data: {
+      home: "Home",
+      courses: "Courses",
+      message: "Welcome to LearnPlus",
+      message1: "Explore the best courses available.",
+      items: [
+        { itemId: 1001, image: "images/maths.jpg", subject: "Mathematics", location: "London", price: 100, space: 10 },
+        { itemId: 1002, image: "images/science.jpg", subject: "Science", location: "Manchester", price: 229, space: 10 },
+        // Additional items here...
+      ],
+      cart: [],
+      cartVisible: false,
+      sortAttribute: "subject",
+      sortOrder: 1,
+    },
+    methods: {
+      toggleCart() {
+        this.cartVisible = !this.cartVisible;
+      },
+      addToCart(item) {
+        const cartItem = this.cart.find((lesson) => lesson.itemId === item.itemId);
+        if (cartItem) {
+          cartItem.quantity++;
+        } else {
+          this.cart.push({ ...item, quantity: 1 });
+        }
+        item.space--;
+      },
+      removeFromCart(lesson) {
+        const index = this.cart.findIndex((cartItem) => cartItem.itemId === lesson.itemId);
+        if (index !== -1) {
+          const originalItem = this.items.find((item) => item.itemId === lesson.itemId);
+          originalItem.space += this.cart[index].quantity;
+          this.cart.splice(index, 1);
+        }
+      },
+      sortLessons() {
+        this.items.sort((a, b) => {
+          if (a[this.sortAttribute] < b[this.sortAttribute]) return -this.sortOrder;
+          if (a[this.sortAttribute] > b[this.sortAttribute]) return this.sortOrder;
+          return 0;
+        });
+      },
+      toggleOrder() {
+        this.sortOrder *= -1;
+        this.sortLessons();
+      },
+    },
+  });
+  </script>

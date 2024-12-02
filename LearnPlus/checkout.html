@@ -6,39 +6,21 @@
     <script src=" https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
     <link rel="stylesheet" type="text/css" href="checkout.css" />
     <script src="js/checkout.js"></script>
-    <title>Document</title>
+    <title>checkout</title>
   </head>
   <body>
     <div id="container">
       <h1>Checkout Page</h1>
-      <form>
-        <div class="form-group">
-          <label for="firstname">{{name}}: </label>
-          <input type="text" id="name" name="name" />
+      <form @submit.prevent="checkout">
+        <input v-model="name"
+        type="text"
+        placeholder="Name"/>
+        <input v-model="phone"
+        type="text"
+        placeholder="Phone Number"/>
+        <button :disabled="!validInput" type="submit">Checkout</button>
+        </form>
+        <div v-if="checkoutMessage" class="checkout-message">
+          {{checkoutMessage}}
         </div>
-        <br />
-        <div class="form-group">
-          <label for="phonenumber">{{phoneNumber}}: </label>
-          <input type="text" id="phonenumber" name="phonenumber" />
-        </div>
-        <div id="checkoutbtn">
-          <button @click="checkoutbtn">Checkout</button>
-        </div>
-      </form>
-    </div>
-  </body>
-  <script>
-    let container = new Vue({
-      el: "#container",
-      data: {
-        name: "Name ",
-        phoneNumber: "Phone Number ",
-      },
-      method: {
-        checkoutbtn: function() {
-          alert('Congratulations, checkout is complete');
-        },
-      },
-    });
-  </script>
 </html>

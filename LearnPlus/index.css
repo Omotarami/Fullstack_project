@@ -4,7 +4,7 @@
 
 #main-section h1 {
   text-align: center;
-  margin-top: 150px;
+  margin-top: 120px;
   font-size: 80px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-weight: 500;
@@ -18,6 +18,7 @@
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   /* margin-top: 60px; */
 }
+
 
 /* #box { */
 /*  */
@@ -61,7 +62,7 @@
 #box button {
   border-radius: 8px;
   margin-top: 10%;
-  padding: 10px;
+  padding: 20px;
   width: 100%;
   border: 1px solid black;
   color: rgb(119, 74, 74);
@@ -115,4 +116,36 @@ li a:hover {
   border: 2px solid black;
   background: none;
   cursor: pointer;
+}
+
+.hero i{
+  size: 20px;
+
+}
+
+#search-bar {
+  position: absolute; /* Position relative to the body or parent container */
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%); /* Move back 50% of its own size to center */
+  width: 30%; /* Adjust as needed for the width of the search bar */
+  display: flex; /* Align icon and input field together */
+  align-items: center;
+  
+}
+
+#search-bar i{
+  position: absolute;
+  top: 55%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 20px; 
+}
+
+#search-bar input {
+  width: 100%;  
+  padding:10px 30px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }

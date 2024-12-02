@@ -99,6 +99,24 @@ new Vue({
     togglecart() {
       this.cartVisible = !this.cartVisible;
     },
+    addToCart(item){
+      const cartItem = this.cart.find((lesson) => lesson.id ===  item.id);
+      if (cartItem){
+        cartItem.quantity++;
+      }else {
+        this.cart.push({...item,quantity:1});
+      }
+      item.space--;
+    },
+    removefromCart(lesson){
+      const index = this.cart.findIndex((cartItem) => cartItem.id === lesson.id);
+      if (index !== 1){
+        this.items.find((item) => item.id === lesson.id).space
+         +=lesson.quantity;
+         this.cart.splice(index,1);
+      }
+
+  },
     sortlessons() {
       this.items.sort((a, b) => {
         if (a[this.returnAttribute] < b[this.sortAttribute])
@@ -108,20 +126,9 @@ new Vue({
         return 0;
       });
     },
-    togglecart(){
+    toggleOrder(){
       this.sortOrder *=-1;
       this.sort.items();
-
       },
-    addToCart(item){
-      const cartItem = this.cart.find((lesson) => lesson.id ===  item.id);
-      if (cartItem){
-        cartItem.quantity++;
-      }else {
-        this.cart.push({...items,quantity:1})
-      }
-      item.space--;
-    },
-
-  },
+    }
 });
