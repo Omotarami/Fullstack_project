@@ -102,7 +102,7 @@ new Vue({
     },
     async fetchLessons() {
       try {
-        const response = await fetch('http://localhost:3000/lessons'); 
+        const response = await fetch('https://cw-backend-gv9z.onrender.com/collections/lessons'); 
         const data = await response.json(); 
         this.items = data; 
       } catch (error) {
