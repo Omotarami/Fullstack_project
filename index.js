@@ -12,7 +12,7 @@ new Vue({
         subject: "Mathematics",
         location: "London",
         price: 100,
-        space: 10,
+        space: 5,
       },
       {
         itemId: 1002,
@@ -20,7 +20,7 @@ new Vue({
         subject: "Science",
         location: "Manchester",
         price: 229,
-        space: 10,
+        space: 5,
       },
       {
         itemId: 1003,
@@ -28,7 +28,7 @@ new Vue({
         subject: "Art",
         location: "leichester",
         price: 486,
-        space: 10,
+        space: 5,
       },
       {
         itemId: 1004,
@@ -36,7 +36,7 @@ new Vue({
         subject: "Social Studies",
         location: "Chester",
         price: 60,
-        space: 10,
+        space:5,
       },
       {
         itemId: 1005,
@@ -44,7 +44,7 @@ new Vue({
         subject: "French",
         location: "New Castle",
         price: 180,
-        space: 10,
+        space: 5,
       },
       {
         itemId: 1006,
@@ -52,7 +52,7 @@ new Vue({
         subject: "Programming for kids",
         location: "Bradford",
         price: 860,
-        space: 10,
+        space: 5,
       },
       {
         itemId: 1007,
@@ -60,7 +60,7 @@ new Vue({
         subject: "History",
         location: "Winchester",
         price: 240,
-        space: 10,
+        space: 5,
       },
       {
         itemId: 1008,
@@ -68,7 +68,7 @@ new Vue({
         subject: "English",
         location: "Sheffield",
         price: 610,
-        space: 10,
+        space: 5,
       },
       {
         itemId: 1009,
@@ -76,7 +76,7 @@ new Vue({
         subject: "Physical Education",
         location: "Yorkshire",
         price: 170,
-        space: 10,
+        space: 5,
       },
       {
         itemId: 1010,
@@ -84,51 +84,82 @@ new Vue({
         subject: "Music",
         location: "Chester",
         price: 285,
-        space: 10,
+        space: 5,
       },
     ],
     cart: [],
     cartVisible: false,
     sortAttribute: "subject",
     sortOrder: 1,
-    name: "",
-    phone: "",
-    checkoutmessage: "",
+    name:"",
+    phone:"",
+    checkoutMessage:"",
+
   },
   methods: {
-    togglecart() {
+    toggleCart() {
       this.cartVisible = !this.cartVisible;
     },
-    addToCart(item){
-      const cartItem = this.cart.find((lesson) => lesson.id ===  item.id);
-      if (cartItem){
+    async fetchLessons() {
+      try {
+        const response = await fetch('http://localhost:3000/lessons'); 
+        const data = await response.json(); 
+        this.items = data; 
+      } catch (error) {
+        console.error('Error fetching lessons:', error);
+      }
+    },
+    addToCart(item) {
+      const cartItem = this.cart.find(
+        (lesson) => lesson.itemId === item.itemId
+      );
+      if (cartItem) {
         cartItem.quantity++;
-      }else {
-        this.cart.push({...item,quantity:1});
+      } else {
+        this.cart.push({...item, quantity: 1});
       }
       item.space--;
     },
-    removefromCart(lesson){
-      const index = this.cart.findIndex((cartItem) => cartItem.id === lesson.id);
-      if (index !== 1){
-        this.items.find((item) => item.id === lesson.id).space
-         +=lesson.quantity;
-         this.cart.splice(index,1);
-      }
+    removeFromCart(lesson) {
+const cartItem = this.cart.find((item) => item.itemId === lesson.itemId);
+const originalItem = this.items.find((item) => item.itemId === lesson.itemId);
 
-  },
-    sortlessons() {
+if (cartItem && originalItem) {
+cartItem.quantity--; // Decrease cart quantity by 1
+originalItem.space++; // Increase available space by 1
+
+if (cartItem.quantity === 0) {
+// If the quantity reaches 0, remove the item from the cart
+this.cart = this.cart.filter((item) => item.itemId !== lesson.itemId);
+}
+}
+},
+    sortLessons() {
       this.items.sort((a, b) => {
-        if (a[this.returnAttribute] < b[this.sortAttribute])
+        if (a[this.sortAttribute] < b[this.sortAttribute])
           return -this.sortOrder;
         if (a[this.sortAttribute] > b[this.sortAttribute])
           return this.sortOrder;
         return 0;
       });
     },
-    toggleOrder(){
-      this.sortOrder *=-1;
-      this.sort.items();
-      },
+    toggleOrder() {
+      this.sortOrder *= -1;
+      this.sortLessons();
+    },
+    checkout() {
+      this.checkoutMessage = `Thank you, ${this.name}! Your order has been placed.`;
+      this.cart = [];
+      this.name = "";
+      this.phone = "";
+    },
+  },
+  computed:{
+    validInput(){
+      const nameValid = /^[a-zA-Z\s]+$/.test(this.name);
+      const phoneValid = /^[0-9]+$/.test(this.phone);
+      return nameValid && phoneValid;
     }
+  }
 });
+
